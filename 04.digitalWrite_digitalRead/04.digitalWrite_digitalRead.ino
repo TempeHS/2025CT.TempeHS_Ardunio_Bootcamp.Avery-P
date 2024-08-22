@@ -29,18 +29,37 @@
     https://github.com/TempeHS/TempeHS_Ardunio_Bootcamp/blob/main/04.digitalWrite_digitalRead/Bootcamp-digitalWrite.png
 */
 static unsigned int ledPin = 6;
-static unsigned int buttonPin = 5;
+static unsigned int buttonPin = 4;
 bool readPin;
 bool writeValue;
-
+#define BUZZER 5
 
 void setup() {
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
+  Serial.begin(9600);
+  Serial.println("Debug");
+  pinMode(BUZZER, OUTPUT);
 }
 
 void loop() {
   readPin = digitalRead(buttonPin);
   writeValue = readPin;
-  digitalWrite(ledPin, writeValue);
-}
+  digitalWrite(ledPin, !writeValue);
+  Serial.print("Button:");
+  Serial.print(digitalRead(4));
+  Serial.print(",");
+  Serial.print("LED:");
+  Serial.println(digitalRead(6));
+  tone(BUZZER, 85); //Set the voltage to high and makes a noise
+  delay(250);//Waits for 1000 milliseconds
+  tone(BUZZER, 85);
+  delay(250);
+  noTone(BUZZER);
+  delay(500);
+  tone(BUZZER, 85);
+  delay(500);
+  noTone(BUZZER);//Sets the voltage to low and makes no noise
+  delay(500000);//Waits for 500000 milliseconds
+
+  }
