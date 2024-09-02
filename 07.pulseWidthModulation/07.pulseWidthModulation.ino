@@ -1,5 +1,5 @@
 /*
-  Author: 
+  Author: Avery P
 
   Learning Intention:
   The students will learn what 'pulse width modulation' is and how to use it to write
@@ -21,12 +21,19 @@
     https://github.com/TempeHS/TempeHS_Ardunio_Bootcamp/blob/main/07.pulseWidthModulation/Bootcamp-PWMOutput.png
 */
 
-
-
-void setup() {
-  
+unsigned static int Red = 9;
+unsigned static int Blue = 10;
+unsigned static int Green = 11;
+void setup()
+{
+  pinMode (Red, OUTPUT);
+  pinMode (Blue, OUTPUT);
+  pinMode (Green, OUTPUT);
 }
 
-void loop() {
-  
+void loop()
+{
+  analogWrite(Red,000);
+  analogWrite(Blue,100);
+  analogWrite(Green,100);
 }
