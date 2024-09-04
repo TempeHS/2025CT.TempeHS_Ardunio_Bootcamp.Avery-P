@@ -1,5 +1,5 @@
 /*
-  Author: 
+  Author: Avery P
 
   Learning Intention:
   The students understand loop logic and apply it to a range of control structures.
@@ -35,11 +35,19 @@
     
 */
 
+static unsigned int LEDpin = 3;
+
 void setup() {
-  
+  pinMode(LEDpin, OUTPUT);
 }
 
 void loop() {
-      
+      for (int i = -255; i < 256; i++)
+      {
+        unsigned val = i;
+        analogWrite(LEDpin,i);
+        delay (25);
+      }
+
 }
 
