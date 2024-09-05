@@ -35,13 +35,30 @@
     
 */
 
-static unsigned int LEDpin = 3;
+#define LEDpin 3
+#define BTNpin 4
 
 void setup() {
+  pinMode(BTNpin, INPUT);
   pinMode(LEDpin, OUTPUT);
+  Serial.begin(9600);
 }
 
-void loop() {
+void loop() 
+{
+  do {
+  digitalWrite(LEDpin, HIGH);
+  Serial.println("Looping");
+}
+while(digitalRead(BTNpin) < 1);
+
+digitalWrite(LEDpin, LOW);
+Serial.println("Loop is skipped");
+}
+
+
+
+/*
       for (int i = -255; i < 256; i++)
       {
         unsigned val = i;
@@ -49,5 +66,10 @@ void loop() {
         delay (25);
       }
 
+while(digitalRead(BTNpin) > 0){
+  digitalWrite(LEDpin, HIGH);
+  Serial.println("Looping");
 }
-
+digitalWrite(LEDpin, LOW);
+Serial.println("Loop is skipped");
+*/
