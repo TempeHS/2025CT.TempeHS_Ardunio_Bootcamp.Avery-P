@@ -25,11 +25,24 @@
 
 #include "Ultrasonic.h"
 
-void setup()
-{
-  
+#include <Servo.h>
+
+Servo myservo;
+Ultrasonic mysensor(5);
+
+unsigned static int servoPin = 7;
+unsigned static int potpin = A2;
+
+void setup() {
+  myservo.attach(servoPin);
+  Serial.begin(9600);
 }
-void loop()
-{
-  
+
+void loop() {
+  Serial.println(mysensor.distanceRead());
+if (mysensor =< distanceRead(10)){
+  myservo
+
+}
+
 }
