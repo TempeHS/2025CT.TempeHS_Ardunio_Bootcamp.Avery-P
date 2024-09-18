@@ -32,17 +32,40 @@ Ultrasonic mysensor(5);
 
 unsigned static int servoPin = 7;
 unsigned static int potpin = A2;
+unsigned static int ledPin = 6;
 
 void setup() {
   myservo.attach(servoPin);
   Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  
 }
 
 void loop() {
   Serial.println(mysensor.distanceRead());
-if (mysensor =< distanceRead(10)){
-  myservo
+
+if(mysensor.distanceRead() <= 10){
+myservo.write(0);
+delay(1000);
+myservo.write(90);
+}
+else if(mysensor.distanceRead() >= 10)
 
 }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* int val = analogRead(potpin);
+  val = map(val, 0, 1023, 0, 180);
+  myservo.write(val); */ 
