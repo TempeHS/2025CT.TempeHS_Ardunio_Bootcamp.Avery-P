@@ -30,6 +30,7 @@
 Servo myservo;
 Ultrasonic mysensor(5);
 
+ 
 unsigned static int servoPin = 7;
 unsigned static int potpin = A2;
 unsigned static int ledPin = 6;
@@ -43,13 +44,18 @@ void setup() {
 
 void loop() {
   Serial.println(mysensor.distanceRead());
+  unsigned long currentMillis = millis();
 
-if(mysensor.distanceRead() <= 10){
-myservo.write(0);
-delay(1000);
-myservo.write(90);
+if(mysensor.distanceRead() <= 10 and currentMillis < 5000 ){
+
+myservo.write(180);
+
 }
-else if(mysensor.distanceRead() >= 10)
+else if(mysensor.distanceRead() <= 10 and currentMillis >= 5000 ){
+myservo.write(90);
+currentMillis = 0;
+}
+
 
 }
 
