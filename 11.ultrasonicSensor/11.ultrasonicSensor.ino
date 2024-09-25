@@ -46,12 +46,12 @@ void loop() {
   Serial.println(mysensor.distanceRead());
   unsigned long currentMillis = millis();
 
-if(mysensor.distanceRead() <= 10 and currentMillis < 5000 ){
+if(mysensor.distanceRead() <= 10 && currentMillis < 5000 ){
 
 myservo.write(180);
 
 }
-else if(mysensor.distanceRead() <= 10 and currentMillis >= 5000 ){
+else if(mysensor.distanceRead() <= 10 || currentMillis >= 5000 ){
 myservo.write(90);
 currentMillis = 0;
 }
